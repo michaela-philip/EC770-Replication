@@ -14,4 +14,5 @@ natl2001 = pd.read_stata('C:/EITC Replication/Replication/Data/natl2001.dta')
 natl2002 = pd.read_stata('C:/EITC Replication/Replication/Data/natl2002.dta')
 
 natl2003 = pd.read_stata('C:/EITC Replication/Replication/Data/natl2003.dta')
-natl2003.head()
+
+natl2001['prenatal care'] = np.where(natl2001.iloc[:, 108] == 1, 1, 0)
