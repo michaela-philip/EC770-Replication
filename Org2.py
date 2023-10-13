@@ -32,3 +32,6 @@ natl2003_full = pd.read_fwf("C:/Users/micha/OneDrive - Emory University/Second Y
 natl2003_full.columns =  ['drop1' ,'year', 'month', 'drop2', 'age', 'drop3', 'state', 'drop4', 'county', 'drop5', 'race', 'drop6', 'hisp', 'drop7', 'marital', 'drop8', 'educ', 'drop9', 'priorchild', 'drop10', 'prenatal', 'drop11', 'tobacco', 'drop12', 'number', 'drop13', 'sex', 'drop14', 'gestation', 'drop15', 'birthweight', 'drop16', 'birthcat', 'drop17']
 
 natl2003 = natl2003_full.drop(columns=['drop1', 'drop2', 'drop3', 'drop4', 'drop5', 'drop6', 'drop7', 'drop8', 'drop9', 'drop10', 'drop11', 'drop12', 'drop13', 'drop14', 'drop15', 'drop16', 'drop17'])
+
+natl2003_short = natl2003.drop(natl2003.index[100:])
+
