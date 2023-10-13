@@ -33,5 +33,4 @@ natl2003_full.columns =  ['drop1' ,'year', 'month', 'drop2', 'age', 'drop3', 'st
 
 natl2003 = natl2003_full.drop(columns=['drop1', 'drop2', 'drop3', 'drop4', 'drop5', 'drop6', 'drop7', 'drop8', 'drop9', 'drop10', 'drop11', 'drop12', 'drop13', 'drop14', 'drop15', 'drop16', 'drop17'])
 
-natl2003_short = natl2003.drop(natl2003.index[100:])
 
