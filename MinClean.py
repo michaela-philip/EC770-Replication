@@ -35,8 +35,8 @@ s_0102['prenat'] = np.where(s_0102['prenatal'] == 1, 1, np.where(s_0102['prenata
 #converting state abbreviations to state fips codes
 FipsDF = pd.read_csv("C:/Users/micha/OneDrive - Emory University/Second Year/Health Econ I/Replication/Data/fips2county.tsv")
 StateFips = FipsDF[['StateAbbr', 'StateFIPS']] 
-natl2003 = natl2003.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
-natl2003 = natl2003.drop(columns=['StateAbbr'])
+natl2003_s = natl2003_s.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
+natl2003_s = natl2003_s.drop(columns=['StateAbbr'])
 
 #recoding race variables
 natl2003_s['black'] = np.where(natl2003_s['race'] == 2, 1, 0)
