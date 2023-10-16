@@ -117,5 +117,8 @@ s_births = s_births.rename(columns={'state': 'stfips', 'county': 'cofips', 'year
 #dropping children conceived in 2000
 s_births = s_births.drop(s_births[s_births['year'] == 2000].index)
 
+#dropping mothers under age 18
+s_births = s_births.drop(s_births[s_births['age'] < 18].index)
+
 #dropping unneeded columns
 s_births = s_births.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat', 'sex', 'byear'])
