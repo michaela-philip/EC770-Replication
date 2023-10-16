@@ -15,6 +15,7 @@ s_0102 = pd.concat([natl2001_s, natl2002_s])
 
 ##### cleaning 2001-2002 #####
 #race
+s_0102['hispmiss'] = np.where(s_0102['hisp'] == 9, 1, 0)
 s_0102['hisp'] = np.where(s_0102['hisp'] == 0, 0, np.where(s_0102['hisp'] == 9, np.nan, 1))
 s_0102['black'] = np.where(s_0102['race'] == 2, 1, 0)
 s_0102['namer'] = np.where(s_0102['race'] == 3, 1, 0)
