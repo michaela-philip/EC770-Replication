@@ -9,10 +9,9 @@ eitc = pd.read_stata("C:/EITC Replication/Replication/Data/eitc.dta")
 
 ruralcounty_vars = pd.read_stata("C:/EITC Replication/Replication/Data/ruralcounty_vars.dta")
 
-natl2001 = pd.read_stata('C:/EITC Replication/Replication/Data/natl2001.dta')
+#creating eitc categories
+eitc['eitc'] = np.where(eitc['eitc_pct'] > 0, 1, 0)
 
-natl2002 = pd.read_stata('C:/EITC Replication/Replication/Data/natl2002.dta')
+eitc['eitcp'] = np.where(eitc['eitc_pct'] > 0, eitc['eitc_pct'], np.nan)
 
-natl2003 = pd.read_stata('C:/EITC Replication/Replication/Data/natl2003.dta')
-
-natl2001['prenatal care'] = np.where(natl2001.iloc[:, 108] == 1, 1, 0)
+eitc['refund'] = np.where((eitc['eitc'] == 1) & (eitc['refund'] == 1), 1, np.where((eitc['eitc'] == 1) & (eitc['refund'] == 0), 0, np.nan))

@@ -11,13 +11,13 @@ natl2002_s = natl2002_s.drop(natl2002_s[natl2002_s['number'] > 1].index)
 natl2003_s = natl2003_s.drop(natl2003_s[natl2003_s['number'] > 1].index)
 
 #creating a conception year variable
-natl2001_s['conception_month'] = np.round(natl2001_s['month'] - (natl2001_s['gestation']*84/365))
-natl2002_s['conception_month'] = np.round(natl2002_s['month'] - (natl2002_s['gestation']*84/365))
-natl2003_s['conception_month'] = np.round(natl2003_s['month'] - (natl2003_s['gestation']*84/365))
+# natl2001_s['conception_month'] = np.round(natl2001_s['month'] - (natl2001_s['gestation']*84/365))
+# natl2002_s['conception_month'] = np.round(natl2002_s['month'] - (natl2002_s['gestation']*84/365))
+# natl2003_s['conception_month'] = np.round(natl2003_s['month'] - (natl2003_s['gestation']*84/365))
 
-natl2001_s['conception_year'] = np.where(natl2001_s['conception_month'] < 0, 2000, 2001)
-natl2002_s['conception_year'] = np.where(natl2002_s['conception_month'] < 0, 2001, 2002)
-natl2003_s['conception_year'] = np.where(natl2003_s['conception_month'] < 0, 2002, 2003)
+# natl2001_s['conception_year'] = np.where(natl2001_s['conception_month'] < 0, 2000, 2001)
+# natl2002_s['conception_year'] = np.where(natl2002_s['conception_month'] < 0, 2001, 2002)
+# natl2003_s['conception_year'] = np.where(natl2003_s['conception_month'] < 0, 2002, 2003)
 
 #combine 2001 and 2002 to clean together since they are identical
 s_0102 = pd.concat([natl2001_s, natl2002_s])
@@ -36,13 +36,13 @@ s_0102['hseduc'] = np.where(s_0102['educ'] < 3, 1, np.where(s_0102['educ'] == 6,
 s_0102['marital'] = np.where(s_0102['marital'] == 1, 1, np.where(s_0102['marital'] == 9, np.nan, 0))
 
 #prior children
-s_0102['priorchild'] = np.where(s_0102['priorchild'] == 99, np.nan, s_0102['priorchild'])
+s_0102 = s_0102.drop(s_0102[s_0102['priorchild'] == 99].index)
 
 #dummy for prenatal care in 1st trimester
 s_0102['prenatal'] = np.where(s_0102['prenatal'] == 1, 1, np.where(s_0102['prenatal'] == 5, np.nan, 0))
 
 #gestation missing values
-s_0102['gestation'] = np.where(s_0102['gestation'] == 99, np.nan, s_0102['gestation'])
+s_0102 = s_0102.drop(s_0102[s_0102['gestation'] == 99].index)
 
 #sex
 s_0102['female'] = np.where(s_0102['sex'] == 2, 1, 0)
@@ -55,6 +55,12 @@ s_0102['lbw'] = np.where(s_0102['birthcat'] < 3, 1, np.where(s_0102['birthcat'] 
 
 #tobacco use
 s_0102['tobacco'] = np.where(s_0102['tobacco'] == 9, np.nan, s_0102['tobacco'])
+
+#county population indicators
+s_0102['cp500'] = np.where(s_0102['countysize'] == 1, 1, 0)
+s_0102['cp250'] = np.where(s_0102['countysize'] == 2, 1, 0)
+s_0102['cp100'] = np.where(s_0102['countysize'] == 3, 1, 0)
+s_0102['cpsmall'] = np.where(s_0102['countysize'] == 9, 1, 0)
 
 
 
@@ -79,6 +85,8 @@ s_03['hseduc'] = np.where(s_03['educ'] < 3, 1, np.where(s_03['educ'] == 6, np.na
 s_03['marital'] = np.where(s_03['marital'] == 1, 1, np.where(s_03['marital'] == 9, np.nan, 0))
 
 #prior children
+s_03 = s_03.drop(s_03[s_03['priorchild'] == 99].index)
+
 s_03['priorchild'] = np.where(s_03['priorchild'] == 99, np.nan, s_03['priorchild'])
 
 #dummy for prenatal care in 1st trimester
@@ -99,5 +107,15 @@ s_03['lbw'] = np.where(s_03['birthcat'] < 3, 1, np.where(s_03['birthcat'] == 4, 
 #tobacco use
 s_03['tobacco'] = np.where(s_03['tobacco'] == 9, np.nan, s_03['tobacco'])
 
+#county population indicators
+s_03['cp500'] = np.where(s_03['countysize'] == 1, 1, 0)
+s_03['cp250'] = np.where(s_03['countysize'] == 2, 1, 0)
+s_03['cp100'] = np.where(s_03['countysize'] == 3, 1, 0)
+s_03['cpsmall'] = np.where(s_03['countysize'] == 9, 1, 0)
+
 #combine all three years
 s_births = pd.concat([s_0102, s_03])
+
+#creating a conception year variable
+s_births['conception_month'] = np.round(s_births['month'] - (s_births['gestation']*84/365))
+s_births['conception_year'] = np.where(s_births['conception_month'] < 0, (s_births['year'] - 1), s_births['year'])
