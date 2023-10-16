@@ -10,15 +10,6 @@ natl2001_s = natl2001_s.drop(natl2001_s[natl2001_s['number'] > 1].index)
 natl2002_s = natl2002_s.drop(natl2002_s[natl2002_s['number'] > 1].index)
 natl2003_s = natl2003_s.drop(natl2003_s[natl2003_s['number'] > 1].index)
 
-#creating a conception year variable
-# natl2001_s['conception_month'] = np.round(natl2001_s['month'] - (natl2001_s['gestation']*84/365))
-# natl2002_s['conception_month'] = np.round(natl2002_s['month'] - (natl2002_s['gestation']*84/365))
-# natl2003_s['conception_month'] = np.round(natl2003_s['month'] - (natl2003_s['gestation']*84/365))
-
-# natl2001_s['conception_year'] = np.where(natl2001_s['conception_month'] < 0, 2000, 2001)
-# natl2002_s['conception_year'] = np.where(natl2002_s['conception_month'] < 0, 2001, 2002)
-# natl2003_s['conception_year'] = np.where(natl2003_s['conception_month'] < 0, 2002, 2003)
-
 #combine 2001 and 2002 to clean together since they are identical
 s_0102 = pd.concat([natl2001_s, natl2002_s])
 
@@ -119,3 +110,9 @@ s_births = pd.concat([s_0102, s_03])
 #creating a conception year variable
 s_births['conception_month'] = np.round(s_births['month'] - (s_births['gestation']*84/365))
 s_births['conception_year'] = np.where(s_births['conception_month'] < 0, (s_births['year'] - 1), s_births['year'])
+
+#renaming columns to make merging easier
+s_births = s_births.rename(columns={'state': 'stfips', 'county': 'cofips', 'year': 'byear', 'conception_year' : 'year', 'priorchild': 'numchildren'})
+
+#dropping unneeded columns
+s_births = s_births.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat'])
