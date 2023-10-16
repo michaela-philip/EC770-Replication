@@ -65,6 +65,7 @@ natl2003_s['state'] = natl2003_s['StateFIPS']
 s_03 = natl2003_s.drop(columns=['StateAbbr', 'StateFIPS'])
 
 #race
+s_03['hispmiss'] = np.where(s_03['hisp'] == 9, 1, 0)
 s_03['hisp'] = np.where(s_03['hisp'] == 0, 0, np.where(s_03['hisp'] == 9, np.nan, 1))
 s_03['black'] = np.where(s_03['race'] == 2, 1, 0)
 s_03['namer'] = np.where(s_03['race'] == 3, 1, 0)

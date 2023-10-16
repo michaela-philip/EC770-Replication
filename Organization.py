@@ -19,5 +19,8 @@ eitc['refund'] = np.where((eitc['eitc'] == 1) & (eitc['refund'] == 1), 1, np.whe
 #we want to use rural county data for any county code 999
 ruralcounty_vars['cofips'] = pd.Series([999 for x in range(len(ruralcounty_vars.index))])
 
+#drop indicator of small county in rural county
+ruralcounty_vars = ruralcounty_vars.drop(columns = ['pop_lt_100k'])
+
 #combining the rural and urban county data
 county = pd.concat([county_vars, ruralcounty_vars])
