@@ -28,6 +28,7 @@ s_0102['marital'] = np.where(s_0102['marital'] == 1, 1, np.where(s_0102['marital
 
 #prior children
 s_0102 = s_0102.drop(s_0102[s_0102['priorchild'] == 99].index)
+s_0102['priorchild'] = np.where(s_0102['priorchild'] > 3, 4, s_0102['priorchild'])
 
 #dummy for prenatal care in 1st trimester
 s_0102['prenatal'] = np.where(s_0102['prenatal'] == 1, 1, np.where(s_0102['prenatal'] == 5, np.nan, 0))
@@ -77,8 +78,7 @@ s_03['marital'] = np.where(s_03['marital'] == 1, 1, np.where(s_03['marital'] == 
 
 #prior children
 s_03 = s_03.drop(s_03[s_03['priorchild'] == 99].index)
-
-s_03['priorchild'] = np.where(s_03['priorchild'] == 99, np.nan, s_03['priorchild'])
+s_03['priorchild'] = np.where(s_03['priorchild'] > 3, 4, s_03['priorchild'])
 
 #dummy for prenatal care in 1st trimester
 s_03['prenatal'] = np.where(s_03['prenatal'] == 1, 1, np.where(s_03['prenatal'] == 5, np.nan, 0))
