@@ -114,5 +114,8 @@ s_births['conception_year'] = np.where(s_births['conception_month'] < 0, (s_birt
 #renaming columns to make merging easier
 s_births = s_births.rename(columns={'state': 'stfips', 'county': 'cofips', 'year': 'byear', 'conception_year' : 'year', 'priorchild': 'numchildren'})
 
+#dropping children conceived in 2000
+s_births - s_births.drop(s_births[s_births['year'] == 2000].index)
+
 #dropping unneeded columns
-s_births = s_births.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat'])
+s_births = s_births.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat', 'sex', 'byear'])

@@ -7,4 +7,4 @@ from MinClean import s_births
 
 from Organization import county
 
-birth_county = pd.merge(s_births, county, on = ['cofips', 'stfips', 'year'], how = 'left')
+birth_county = pd.merge(s_births, county, on = ['cofips', 'stfips', 'year'], how = 'outer')
