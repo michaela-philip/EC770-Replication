@@ -8,7 +8,7 @@ FipsDF = pd.read_csv("C:/Users/micha/OneDrive - Emory University/Second Year/Hea
 #converting state abbreviations to state fips codes
 StateFips = FipsDF[['StateAbbr', 'StateFIPS']] 
 
-natl2003 = natl2003.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
+natl2003 = natl2003_short.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
 
 natl2003 = natl2003.drop(columns=['StateAbbr'])
 
