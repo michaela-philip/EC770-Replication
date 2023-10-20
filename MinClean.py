@@ -14,6 +14,10 @@ natl2003_s = natl2003_s.drop(natl2003_s[natl2003_s['number'] > 1].index)
 s_0102 = pd.concat([natl2001_s, natl2002_s])
 
 ##### cleaning 2001-2002 #####
+
+#age
+s_0102 = np.where(s_0102['age'] == 99, np.nan, s_0102['age'])
+
 #race
 s_0102['hispmiss'] = np.where(s_0102['hisp'] == 9, 1, 0)
 s_0102['hisp'] = np.where((s_0102['hisp'] == 0) & (s_0102['hisp'] == 9), 0, 1)
@@ -65,6 +69,9 @@ StateFips = FipsDF[['StateAbbr', 'StateFIPS']]
 natl2003_s = natl2003_s.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
 natl2003_s['state'] = natl2003_s['StateFIPS']
 s_03 = natl2003_s.drop(columns=['StateAbbr', 'StateFIPS'])
+
+#age
+s_03 = np.where(s_03['age'] == 99, np.nan, s_03['age'])
 
 #race
 s_03['hispmiss'] = np.where(s_03['hisp'] == 9, 1, 0)
