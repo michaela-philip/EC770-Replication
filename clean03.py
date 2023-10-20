@@ -21,7 +21,7 @@ nat03['namer'] = np.where(nat03['race'] == 3, 1, 0)
 nat03['asian'] = np.where(nat03['race'] == 4, 1, 0)
 
 #education
-nat03['educ'] = nat03.drop(nat03[nat03['educ'] > 3].index)
+nat03 = nat03.drop(nat03[nat03['educ'] > 3].index)
 nat03['hseduc'] = np.where(nat03['educ'] < 3, 1, 0)
 
 #marital status

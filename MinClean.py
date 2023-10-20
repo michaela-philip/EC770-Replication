@@ -22,7 +22,7 @@ s_0102['namer'] = np.where(s_0102['race'] == 3, 1, 0)
 s_0102['asian'] = np.where(s_0102['race'] > 3, 1, 0)
 
 #education
-s_0102['educ'] = s_0102.drop(s_0102[s_0102['educ'] > 3].index)
+s_0102 = s_0102.drop(s_0102[s_0102['educ'] > 3].index)
 s_0102['hseduc'] = np.where(s_0102['educ'] < 3, 1, 0)
 
 #marital status
@@ -74,7 +74,7 @@ s_03['namer'] = np.where(s_03['race'] == 3, 1, 0)
 s_03['asian'] = np.where(s_03['race'] == 4, 1, 0)
 
 #education
-s_03['educ'] = s_03.drop(s_03[s_03['educ'] > 3].index)
+s_03 = s_03.drop(s_03[s_03['educ'] > 3].index)
 s_03['hseduc'] = np.where(s_03['educ'] < 3, 1, 0)
 
 #marital status
