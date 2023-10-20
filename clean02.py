@@ -25,7 +25,7 @@ nat02 = nat02.drop(nat02[nat02['priorchild'] == 99].index)
 nat02['priorchild'] = np.where(nat02['priorchild'] > 3, 4, nat02['priorchild'])
 
 #dummy for prenatal care in 1st trimester
-nat02['prenatal'] = np.where(nat02['prenatal'] == 1, 1, np.where(nat02['[prenatal'] == 5, np.nan, 0))
+nat02['prenatal'] = np.where(nat02['prenatal'] == 1, 1, np.where(nat02['prenatal'] == 5, np.nan, 0))
 
 #gestation missing values
 nat02 = nat02.drop(nat02[nat02['gestation'] == 99].index)
