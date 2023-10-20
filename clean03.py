@@ -15,13 +15,14 @@ nat03 = nat03.drop(columns=['StateAbbr', 'StateFIPS'])
 
 #race
 nat03['hispmiss'] = np.where(nat03['hisp'] == 9, 1, 0)
-nat03['hisp'] = np.where(nat03['hisp'] == 0, 0, np.where(nat03['hisp'] == 9, np.nan, 1))
+nat03['hisp'] = np.where((nat03['hisp'] == 0) & (nat03['hisp'] == 9), 0, 1)
 nat03['black'] = np.where(nat03['race'] == 2, 1, 0)
 nat03['namer'] = np.where(nat03['race'] == 3, 1, 0)
 nat03['asian'] = np.where(nat03['race'] == 4, 1, 0)
 
 #education
-nat03['hseduc'] = np.where(nat03['educ'] < 3, 1, np.where(nat03['educ'] == 6, np.nan, 0))
+nat03['educ'] = nat03.drop(nat03[nat03['educ'] > 3].index)
+nat03['hseduc'] = np.where(nat03['educ'] < 3, 1, 0)
 
 #marital status
 nat03['marital'] = np.where(nat03['marital'] == 1, 1, np.where(nat03['marital'] == 9, np.nan, 0))
@@ -31,7 +32,7 @@ nat03 = nat03.drop(nat03[nat03['priorchild'] == 99].index)
 nat03['priorchild'] = np.where(nat03['priorchild'] > 3, 4, nat03['priorchild'])
 
 #dummy for prenatal care in 1st trimester
-nat03['prenatal'] = np.where(nat03['prenatal'] == 1, 1, np.where(nat03['prenatal'] == 5, np.nan, 0))
+nat03['prenatal'] = np.where(nat03['prenatal'] == 1, 1, np.where(nat03['[prenatal'] == 5, np.nan, 0))
 
 #gestation missing values
 nat03['gestation'] = np.where(nat03['gestation'] == 99, np.nan, nat03['gestation'])
