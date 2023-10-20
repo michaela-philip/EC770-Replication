@@ -95,7 +95,7 @@ s_03['priorchild'] = np.where(s_03['priorchild'] > 3, 4, s_03['priorchild'])
 s_03['prenatal'] = np.where(s_03['prenatal'] == 1, 1, np.where(s_03['prenatal'] == 5, np.nan, 0))
 
 #gestation missing values
-s_03['gestation'] = np.where(s_03['gestation'] == 99, np.nan, s_03['gestation'])
+s_03 = s_03.drop(s_03[s_03['gestation'] == 99].index)
 
 #sex
 s_03['female'] = np.where(s_03['sex'] == 'F', 1, 0)

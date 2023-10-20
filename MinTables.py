@@ -5,6 +5,8 @@ import pandas as pd
 
 from MinMerge import s_birth_county_eitc 
 
+s_birth_county_eitc.describe()
+
 s_sumstats = pd.DataFrame()
 
 s_sumstats.columns = ['Variables', 'Mean', 'Std. Dev', 'Min', 'Max']
