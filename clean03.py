@@ -7,7 +7,7 @@ from load03 import nat03
 nat03 = nat03.drop(nat03[nat03['number'] > 1].index)
 
 #converting state abbreviations to state fips codes
-FipsDF = pd.read_csv("C:/Users/micha/OneDrive - Emory University/Second Year/Health Econ I/Replication/Data/fips2county.tsv", delimiter = "\t")
+FipsDF = pd.read_csv("./data/fips2county.tsv", delimiter = "\t")
 StateFips = FipsDF[['StateAbbr', 'StateFIPS']] 
 nat03 = nat03.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
 nat03['state'] = nat03['StateFIPS']
