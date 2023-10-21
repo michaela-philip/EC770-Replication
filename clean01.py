@@ -7,7 +7,7 @@ from load01 import nat01
 nat01 = nat01.drop(nat01[nat01['number'] > 1].index)
 
 #age
-nat01 = np.where(nat01['age'] == 99, np.nan, nat01['age'])
+nat01['age'] = np.where(nat01['age'] == 99, np.nan, nat01['age'])
 
 #race
 nat01['hispmiss'] = np.where(nat01['hisp'] == 9, 1, 0)

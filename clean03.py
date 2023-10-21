@@ -14,7 +14,7 @@ nat03['state'] = nat03['StateFIPS']
 nat03 = nat03.drop(columns=['StateAbbr', 'StateFIPS'])
 
 #age
-nat03 = np.where(nat03['age'] == 99, np.nan, nat03['age'])
+nat03['age'] = np.where(nat03['age'] == 99, np.nan, nat03['age'])
 
 #race
 nat03['hispmiss'] = np.where(nat03['hisp'] == 9, 1, 0)
