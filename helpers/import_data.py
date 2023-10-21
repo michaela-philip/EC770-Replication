@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-def import_data(filepath, colspecs, columns, dropcols, limit):
+def import_data(filepath, colspecs, columns, dropcols, limit= None):
     output = pd.read_fwf( filepath, colspecs = colspecs, header = None, nrows=limit)
     output.columns = columns
     output = output.drop(columns=dropcols)
