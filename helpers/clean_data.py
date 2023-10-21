@@ -56,6 +56,7 @@ def clean_data(input):
 
     #tobacco use
     output['tobacco'] = np.where(output['tobacco'] == 9, np.nan, output['tobacco'])
+    output['tobacco'] = np.where(output['tobacco'] == 1, 1, 0)
 
     #county population indicators
     output['cp500'] = np.where(output['countysize'] == 1, 1, 0)

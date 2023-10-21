@@ -53,6 +53,7 @@ s_0102['lbw'] = np.where(s_0102['birthcat'] < 3, 1, np.where(s_0102['birthcat'] 
 
 #tobacco use
 s_0102['tobacco'] = np.where(s_0102['tobacco'] == 9, np.nan, s_0102['tobacco'])
+s_0102['tobacco'] = np.where(s_0102['tobacco'] == 1, 1, 0)
 
 #county population indicators
 s_0102['cp500'] = np.where(s_0102['countysize'] == 1, 1, 0)

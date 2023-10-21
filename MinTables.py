@@ -15,4 +15,4 @@ s_sumstats = s_sumstats.drop(labels = ['year', 'stfips', 'cofips', 'month', 'eit
 
 print(s_sumstats)
 
-s_sumstats = s_sumstats.reindex(['prenatal', 'tobacco', 'birthweight', 'birthcat', 'lbw', 'gestation', 'eitc', 'eitcp', 'refund', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc'])
+s_sumstats = s_sumstats.reindex(['prenatal', 'tobacco', 'birthweight', 'lbw', 'gestation', 'eitc', 'eitcp', 'refund', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc'])
