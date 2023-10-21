@@ -3,11 +3,11 @@ import numpy as np
 
 #let's read in the data
 
-county_vars = pd.read_stata("C:/EITC Replication/Replication/Data/county_vars.dta")
+county_vars = pd.read_stata("./inputs/county_vars.dta")
 
-eitc = pd.read_stata("C:/EITC Replication/Replication/Data/eitc.dta")
+eitc = pd.read_stata("./inputs/eitc.dta")
 
-ruralcounty_vars = pd.read_stata("C:/EITC Replication/Replication/Data/ruralcounty_vars.dta")
+ruralcounty_vars = pd.read_stata("./inputs/ruralcounty_vars.dta")
 
 #creating eitc categories
 eitc['eitc'] = np.where(eitc['eitc_pct'] > 0, 1, 0)
