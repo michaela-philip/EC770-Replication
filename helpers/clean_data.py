@@ -18,6 +18,10 @@ def clean_data(input):
     #drop any twins or more
     output = input.drop(input[input['number'] > 1].index)
 
+    #converting state to fips
+    if output['state']dtype == 'object':
+        output['state'] = convert_to_fips(output)
+
     #age
     output['age'] = np.where(output['age'] == 99, np.nan, output['age'])
 
@@ -76,10 +80,6 @@ def clean_data(input):
 
     #dropping mothers under age 18
     output = output.drop(output[output['age'] < 18].index)
-
-    #converting state to fips
-    #if output['state']dtype == 'object':
-        #output['state'] = convert_to_fips(output)
 
     #dropping unneeded columns
     output = output.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat', 'sex', 'byear'])
