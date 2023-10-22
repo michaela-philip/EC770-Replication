@@ -70,7 +70,7 @@ def clean_data(input):
 
     #converting state to fips
     if output.state.dtype == 'object':
-        output['state'] = convert_to_fips(output)
+        output = convert_to_fips(output)
 
     #renaming columns to make merging easier
     output = output.rename(columns={'state': 'stfips', 'county': 'cofips', 'year': 'byear', 'conception_year' : 'year', 'priorchild': 'numchildren'})
