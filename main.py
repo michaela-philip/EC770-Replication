@@ -44,5 +44,5 @@ def main():
     table_1 = summary_table(merged)
 
 if __name__ == "__main__":
-    main()
     print("I'm running!")
+    main()
