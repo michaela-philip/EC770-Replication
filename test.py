@@ -59,4 +59,4 @@ def test_3():
 
 if __name__ == "__main__":
     print("I'm running!")
-    test_3()
+    test_2()
