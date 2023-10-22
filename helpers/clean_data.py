@@ -68,10 +68,6 @@ def clean_data(input):
     output['conception_month'] = np.round(output['month'] - (output['gestation']*84/365))
     output['conception_year'] = np.where(output['conception_month'] < 0, (output['year'] - 1), output['year'])
 
-    #converting state to fips
-    #if output.state.dtype == 'object':
-        #output = convert_to_fips(output)
-
     #renaming columns to make merging easier
     output = output.rename(columns={'state': 'stfips', 'county': 'cofips', 'year': 'byear', 'conception_year' : 'year', 'priorchild': 'numchildren'})
 
