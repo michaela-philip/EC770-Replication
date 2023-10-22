@@ -35,9 +35,10 @@ def test_2():
     nat_03_states = convert_to_fips(nat_03_states)
     print("state conversion complete")
 
-    nat_03.drop(columns=['state'], inplace=True)
-    nat_03.append(nat_03_states, ignore_index=True)
-    
+    nat_03 = nat_03.drop(columns = ['state'])
+    nat_03 = pd.concat([nat_03, nat_03_states], axis = 1)
+    print("state concat complete")
+
     print(nat_03.memory_usage())
     nat_03 = clean_data(nat_03)
     print("cleaning complete")
