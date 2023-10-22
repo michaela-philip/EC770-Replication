@@ -84,6 +84,8 @@ def clean_data(input):
     #dropping unneeded columns
     output = output.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat', 'sex', 'byear'])
 
+    return output 
+
 if __name__ == "__main__":
     print("[CLEAN_DATA]\t","I've been called directly")
     print("[CLEAN_DATA]\t",__name__)
