@@ -18,6 +18,20 @@ def clean_data(input):
     #drop any twins or more
     output = input.drop(input[input['number'] > 1].index)
 
+    #prior children
+    output = output.drop(output[output['priorchild'] == 99].index)
+    output['priorchild'] = np.where(output['priorchild'] > 3, 4, output['priorchild'])
+
+    #education
+    output = output.drop(output[output['educ'] > 3].index)
+    output['hseduc'] = np.where(output['educ'] < 3, 1, 0)
+
+    #gestation missing values
+    output = output.drop(output[output['gestation'] == 99].index)
+
+    #dropping mothers under age 18
+    output = output.drop(output[output['age'] < 18].index)
+
     #age
     output['age'] = np.where(output['age'] == 99, np.nan, output['age'])
 
@@ -28,22 +42,11 @@ def clean_data(input):
     output['namer'] = np.where(output['race'] == 3, 1, 0)
     output['asian'] = np.where(output['race'] > 3, 1, 0)
 
-    #education
-    output = output.drop(output[output['educ'] > 3].index)
-    output['hseduc'] = np.where(output['educ'] < 3, 1, 0)
-
     #marital status
     output['marital'] = np.where(output['marital'] == 1, 1, np.where(output['marital'] == 9, np.nan, 0))
 
-    #prior children
-    output = output.drop(output[output['priorchild'] == 99].index)
-    output['priorchild'] = np.where(output['priorchild'] > 3, 4, output['priorchild'])
-
     #dummy for prenatal care in 1st trimester
     output['prenatal'] = np.where(output['prenatal'] == 1, 1, np.where(output['prenatal'] == 5, np.nan, 0))
-
-    #gestation missing values
-    output = output.drop(output[output['gestation'] == 99].index)
 
     #sex
     output['female'] = np.where(output['sex'] == 2, 1, 0)
@@ -73,9 +76,6 @@ def clean_data(input):
 
     #dropping children conceived in 2000
     output = output.drop(output[output['year'] == 2000].index)
-
-    #dropping mothers under age 18
-    output = output.drop(output[output['age'] < 18].index)
 
     #dropping unneeded columns
     output = output.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat', 'sex', 'byear'])
