@@ -19,7 +19,7 @@ def clean_data(input):
     output = input.drop(input[input['number'] > 1].index)
 
     #converting state to fips
-    if output['state']dtype == 'object':
+    if output.state.dtype == 'object':
         output['state'] = convert_to_fips(output)
 
     #age
