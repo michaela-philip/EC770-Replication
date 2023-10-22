@@ -78,7 +78,7 @@ def clean_data(input):
     output = output.drop(output[output['age'] < 18].index)
 
     #converting state to fips
-    if output['state'].dtype == 'object':
+    if output.state.dtype == 'object':
         output['state'] = convert_to_fips(output)
 
     #dropping unneeded columns
