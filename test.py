@@ -26,11 +26,13 @@ def test_2():
     nat_03_s = import_data(filepath, colspecs, columns, drop_columns)
 
     print(nat_03_2.head())
-    nat_03 = convert_to_fips(nat_03_s)
+    #nat_03 = convert_to_fips(nat_03_s)
 
     cleaned_03 = clean_data(nat_03)
+
+    print(cleaned_03.head())
 
 
 if __name__ == "__main__":
     print("I'm running!")
-    test_1()
+    test_2()
