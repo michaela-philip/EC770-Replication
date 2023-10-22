@@ -31,9 +31,13 @@ def test_2():
     
     print(nat_03.memory_usage())
 
-    nat_03['state'] = convert_to_fips(nat_03['state'])
+    nat_03_states = pd.DataFrame(nat_03['state'])
+    nat_03_states = convert_to_fips(nat_03_states)
     print("state conversion complete")
 
+    nat_03.drop(columns=['state'], inplace=True)
+    nat_03.append(nat_03_states, ignore_index=True)
+    
     print(nat_03.memory_usage())
     nat_03 = clean_data(nat_03)
     print("cleaning complete")
