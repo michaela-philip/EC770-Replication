@@ -3,6 +3,7 @@ import pandas as pd
 
 from helpers.clean_data import clean_data
 from helpers.import_data import import_data 
+from helpers.clean_data import convert_to_fips 
 
 def test_1():
     filepath = "./inputs/Natl2001.dat"

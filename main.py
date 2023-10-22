@@ -26,6 +26,8 @@ def main():
     drop_columns = ['drop0', 'drop1', 'drop2', 'drop3', 'drop4', 'drop5', 'drop6', 'drop7', 'drop8', 'drop9', 'drop10', 'drop11', 'drop12', 'drop13', 'drop14', 'drop15', 'drop16', 'drop17']
     nat_03 = import_data(filepath, colspecs, columns, drop_columns)
 
+    nat_03 = convert_to_fips(nat_03) 
+
     cleaned_01 = clean_data(nat_01)
     cleaned_02 = clean_data(nat_02)
     cleaned_03 = clean_data(nat_03)
