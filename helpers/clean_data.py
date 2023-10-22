@@ -41,7 +41,10 @@ def clean_data(input):
 
     #dropping children conceived in 2000
     output = output.drop(output[output['year'] == 2000].index)
-    
+
+    #dropping unneeded columns
+    output = output.drop(columns = ['conception_month', 'byear'])
+
     #age
     output['age'] = np.where(output['age'] == 99, np.nan, output['age'])
 
@@ -78,7 +81,7 @@ def clean_data(input):
     output['cpsmall'] = np.where(output['countysize'] == 9, 1, 0)
 
     #dropping unneeded columns
-    output = output.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat', 'sex', 'byear'])
+    output = output.drop(columns = ['countysize', 'educ', 'number', 'race', 'birthcat', 'sex'])
 
     return output 
 
