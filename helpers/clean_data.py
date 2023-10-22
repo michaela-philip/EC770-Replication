@@ -18,10 +18,6 @@ def clean_data(input):
     #drop any twins or more
     output = input.drop(input[input['number'] > 1].index)
 
-    #converting state to fips
-    if output.state.dtype == 'object':
-        output['state'] = convert_to_fips(output)
-
     #age
     output['age'] = np.where(output['age'] == 99, np.nan, output['age'])
 
@@ -71,6 +67,10 @@ def clean_data(input):
     #creating a conception year variable
     output['conception_month'] = np.round(output['month'] - (output['gestation']*84/365))
     output['conception_year'] = np.where(output['conception_month'] < 0, (output['year'] - 1), output['year'])
+
+    #converting state to fips
+    if output.state.dtype == 'object':
+        output['state'] = convert_to_fips(output)
 
     #renaming columns to make merging easier
     output = output.rename(columns={'state': 'stfips', 'county': 'cofips', 'year': 'byear', 'conception_year' : 'year', 'priorchild': 'numchildren'})
