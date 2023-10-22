@@ -29,9 +29,12 @@ def test_2():
     print(nat_03.head())
     print("import complete")
     
+    print(nat_03.memory_usage())
+
     nat_03['state'] = convert_to_fips(nat_03['state'])
     print("state conversion complete")
 
+    print(nat_03.memory_usage())
     nat_03 = clean_data(nat_03)
     print("cleaning complete")
 
