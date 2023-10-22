@@ -6,8 +6,8 @@ from helpers.import_data import import_data
 from helpers.merge_data import merge_data
 from helpers.clean_county import clean_county
 from helpers.clean_eitc import clean_eitc
+from helpers.summary_stats import summary_table
 
-from Organization import 
 def main():
     master = pd.DataFrame()
 
@@ -34,4 +34,15 @@ def main():
     filepath_r = "./inputs/ruralcounty_vars.dta"
     county = clean_county(filepath_u, filepath_r)
 
-    #merged = merge_data(cleaned_01, cleaned_02, cleaned_03, county, eitc)
+    filepath = "./inputs/eitc.dta"
+    eitc = clean_eitc(filepath)
+
+    merged = merge_data(cleaned_01, cleaned_02, cleaned_03, county, eitc)
+
+    return merged
+
+    table_1 = summary_table(merged)
+
+if __name__ == "__main__":
+    main()
+    print("I'm running!")
