@@ -32,6 +32,16 @@ def clean_data(input):
     #dropping mothers under age 18
     output = output.drop(output[output['age'] < 18].index)
 
+    #creating a conception year variable
+    output['conception_month'] = np.round(output['month'] - (output['gestation']*84/365))
+    output['conception_year'] = np.where(output['conception_month'] < 0, (output['year'] - 1), output['year'])
+
+    #renaming columns to make merging easier
+    output = output.rename(columns={'state': 'stfips', 'county': 'cofips', 'year': 'byear', 'conception_year' : 'year', 'priorchild': 'numchildren'})
+
+    #dropping children conceived in 2000
+    output = output.drop(output[output['year'] == 2000].index)
+    
     #age
     output['age'] = np.where(output['age'] == 99, np.nan, output['age'])
 
@@ -66,16 +76,6 @@ def clean_data(input):
     output['cp250'] = np.where(output['countysize'] == 2, 1, 0)
     output['cp100'] = np.where(output['countysize'] == 3, 1, 0)
     output['cpsmall'] = np.where(output['countysize'] == 9, 1, 0)
-
-    #creating a conception year variable
-    output['conception_month'] = np.round(output['month'] - (output['gestation']*84/365))
-    output['conception_year'] = np.where(output['conception_month'] < 0, (output['year'] - 1), output['year'])
-
-    #renaming columns to make merging easier
-    output = output.rename(columns={'state': 'stfips', 'county': 'cofips', 'year': 'byear', 'conception_year' : 'year', 'priorchild': 'numchildren'})
-
-    #dropping children conceived in 2000
-    output = output.drop(output[output['year'] == 2000].index)
 
     #dropping unneeded columns
     output = output.drop(columns = ['countysize', 'educ', 'number', 'conception_month', 'race', 'birthcat', 'sex', 'byear'])
