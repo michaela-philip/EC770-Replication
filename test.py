@@ -147,4 +147,4 @@ def test_6():
 
 if __name__ == "__main__":
     print("I'm running!")
-    test_5()
+    test_6()
