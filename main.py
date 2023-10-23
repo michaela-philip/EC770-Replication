@@ -56,6 +56,10 @@ def main():
     #print("summary table complete", table_1)
 
     print(merged.describe())
+    
+    print(merged.sum('year == 2001'))
+    print(merged.sum('year == 2002'))
+    print(merged.sum('year == 2003'))
 
     #merged.to_pickle("./complete_data.pkl")
 
