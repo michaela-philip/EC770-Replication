@@ -54,6 +54,13 @@ def main():
 
     print("pickle complete")
 
+
+def secondary():
+    complete_data = pd.read_pickle("./complete_data.pkl")
+    table_1 = summary_table(complete_data)
+    print(table_1)
+
+
 if __name__ == "__main__":
     print("I'm running!")
-    main()
+    secondary()
