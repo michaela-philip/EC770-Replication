@@ -5,5 +5,6 @@ import statsmodels.api as sm
 def ols_reg(data, y_var, x_var):
     y = data[y_var]
     X = data[x_var]
-    model = sm.OLS(y, X).fit()
+    X = C('state') + C('year') - 1
+    model = sm.OLS(y, X, missing = 'drop').fit()
     return model
