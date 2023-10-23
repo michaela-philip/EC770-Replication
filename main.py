@@ -63,4 +63,4 @@ def secondary():
 
 if __name__ == "__main__":
     print("I'm running!")
-    secondary()
+    main()
