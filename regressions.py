@@ -13,7 +13,7 @@ def main():
     y_var = 'prenatal'
     x_var = ['eitc', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc']
 
-    model_2_1 = ols_reg(data, y_var, x_var, missing = 'drop')
+    model_2_1 = ols_reg(data, y_var, x_var)
 
 
 if __name__ == "__main__":
