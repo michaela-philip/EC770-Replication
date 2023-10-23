@@ -8,7 +8,7 @@ from helpers.summary_stats import summary_table
 from helpers.summary_stats import summary_stats
 
 complete_data = pd.read_pickle("./complete_data.pkl")
-rows = ['1st Trimester Prenatal Care', 'Smoked During Pregnancy', 'Birth Weight', 'Birth Weight<2500 grams', 'Gestation Weeks', 'State has an EITC', 'EITC percent of federal (among states with EITC)', 'State has a refund (among states with EITC)', 'Maternal age', 'Married', 'Female baby', 'Black', 'Native American', 'Asian', 'Hispanic', 'Less than high school', 'Hispanic ethnicity missing', 'County pop 500,000-1,000,000', 'County pop 250,000-500,000', 'County pop 100,000-250,000', 'County pop<100,000', 'Unemployment', 'Real income per capital (in $1000s)', 'Percent poverty', 'Primary care physicians per 1000 females age 15-44']
+rows = ['State has an EITC', 'Maternal age', 'Married', 'Female baby', 'Black', 'Native American', 'Asian', 'Hispanic', 'Less than high school', 'Hispanic ethnicity missing', 'County pop 500,000-1,000,000', 'County pop 250,000-500,000', 'County pop 100,000-250,000', 'County pop<100,000', 'Unemployment', 'Real income per capital (in $1000s)', 'Percent poverty', 'Primary care physicians per 1000 females age 15-44']
 
 def main():
 
@@ -23,7 +23,8 @@ def main():
     x_var = ['eitc', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc']
     model_2_1 = ols_reg(data, y_var, x_var)
     # print(model_2_1.summary())
-    table_2['1st Trimester Prenatal Care'] = model_2_1.params
+    data = {x_var : model_2_1.params}
+    table_2['1st Trimester Prenatal Care'] = table_2.assign(data)
     print(table_2)
 
     # y_var = 'tobacco'
