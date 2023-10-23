@@ -51,11 +51,13 @@ def main():
     merged = merge_data(cleaned_01, cleaned_02, cleaned_03, county, eitc)
 
     print("merge complete", merged.head())
-    table_1 = summary_table(merged)
+    #table_1 = summary_table(merged)
 
-    print("summary table complete", table_1)
+    #print("summary table complete", table_1)
 
-    merged.to_pickle("./complete_data.pkl")
+    print(merged.describe())
+
+    #merged.to_pickle("./complete_data.pkl")
 
 if __name__ == "__main__":
     print("I'm running!")
