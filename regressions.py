@@ -15,6 +15,8 @@ def main():
 
     model_2_1 = ols_reg(data, y_var, x_var)
 
+    print(model_2_1.summary())
+
 
 if __name__ == "__main__":
     print("I'm running!")
