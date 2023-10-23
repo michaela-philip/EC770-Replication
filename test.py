@@ -4,6 +4,7 @@ import pandas as pd
 from helpers.clean_data import clean_data
 from helpers.import_data import import_data 
 from helpers.clean_data import convert_to_fips 
+from helpers.clean_data import state_abbrev_fips_dict
 
 def test_1():
     filepath = "./inputs/Natl2001.dat"
@@ -23,25 +24,26 @@ def test_2():
     colspecs = [(0, 14), (14, 18), (18, 20), (20, 76), (76, 78), (78, 108), (108, 110), (110, 113), (113, 116), (116, 131), (131, 132), (132, 142), (142, 143), (143, 147), (147, 148), (148, 152), (152, 153), (153, 157), (157, 158), (158, 203), (203, 205), (205, 258), (258, 259), (259, 289), (289, 290), (290, 422), (422, 423), (423, 435), (435, 436), (436, 450), (450, 452), (452, 462), (462, 466), (466, 472), (472, 473), (473, -1)]
     columns = ['drop1' ,'year', 'month', 'drop2', 'age', 'drop3', 'state', 'drop4', 'county', 'drop5', 'countysize', 'drop0', 'race', 'drop6', 'hisp', 'drop7', 'marital', 'drop8', 'educ', 'drop9', 'priorchild', 'drop10', 'prenatal', 'drop11', 'tobacco', 'drop12', 'number', 'drop13', 'sex', 'drop14', 'gestation', 'drop15', 'birthweight', 'drop16', 'birthcat', 'drop17']
     drop_columns = ['drop0', 'drop1', 'drop2', 'drop3', 'drop4', 'drop5', 'drop6', 'drop7', 'drop8', 'drop9', 'drop10', 'drop11', 'drop12', 'drop13', 'drop14', 'drop15', 'drop16', 'drop17']
-    limit = 1000
+    limit = 100000
     nat_03 = import_data(filepath, colspecs, columns, drop_columns, limit)
 
     print(nat_03.head())
-    print("import complete")
-    
-    print(nat_03.memory_usage())
+    print("import complete", nat_03.info())
 
-    nat_03_states = pd.DataFrame(nat_03['state'])
-    nat_03_states = convert_to_fips(nat_03_states)
-    print("state conversion complete")
+    state_abbrev_fips_dict = { 'AL': '01', 'AK': '02', 'AZ': '04', 'AR': '05', 'CA': '06', 'CO': '08', 'CT': '09', 'DE': '10', 'FL': '12', 'GA': '13', 'HI': '15', 'ID': '16', 'IL': '17', 'IN': '18', 'IA': '19', 'KS': '20', 'KY': '21', 'LA': '22', 'ME': '23', 'MD': '24', 'MA': '25', 'MI': '26', 'MN': '27', 'MS': '28', 'MO': '29', 'MT': '30', 'NE': '31', 'NV': '32', 'NH': '33', 'NJ': '34', 'NM': '35', 'NY': '36', 'NC': '37', 'ND': '38', 'OH': '39', 'OK': '40', 'OR': '41', 'PA': '42', 'RI': '44', 'SC': '45', 'SD': '46', 'TN': '47', 'TX': '48', 'UT': '49', 'VT': '50', 'VA': '51', 'WA': '53', 'WV': '54', 'WI': '55', 'WY': '56', 'AS': '60', 'GU': '66', 'MP': '69', 'PR': '72', 'VI': '78'}
+    nat_03['state'] = nat_03['state'].map(state_abbrev_fips_dict)
+    print("state conversion complete", nat_03.info())
 
-    nat_03 = nat_03.drop(columns = ['state'])
-    nat_03 = pd.concat([nat_03, nat_03_states], axis = 1)
-    print("state concat complete")
+    #nat_03_states = pd.DataFrame(nat_03['state'])
+    #nat_03_states = convert_to_fips(nat_03_states)
+    #print("state conversion complete", nat_03.info())
 
-    print(nat_03.memory_usage())
+    #nat_03 = nat_03.drop(columns = ['state'])
+    #nat_03 = pd.concat([nat_03, nat_03_states], axis = 1)
+    #print("state concat complete", nat_03.info())
+
     nat_03 = clean_data(nat_03)
-    print("cleaning complete")
+    print("cleaning complete", nat_03.info())
 
     print(nat_03.head())
 
