@@ -4,6 +4,7 @@ import pandas as pd
 from helpers.clean_data import clean_data
 from helpers.import_data import import_data 
 from helpers.clean_county import clean_county
+from helpers.clean_eitc import clean_eitc
 # from helpers.clean_data import convert_to_fips 
 # from helpers.clean_data import state_abbrev_fips_dict
 
@@ -67,16 +68,24 @@ def test_4():
     print("2001 import complete", nat_01.info())
 
     cleaned_01 = clean_data(nat_01)
+    print('birth data cleaned', cleaned_01.describe())
 
     filepath_u = "./inputs/county_vars.dta"
     filepath_r = "./inputs/ruralcounty_vars.dta"
     county = clean_county(filepath_u, filepath_r)
     print("county data cleaning complete")
 
-    test_birth_county = pd.merge(cleaned_01, county, on = ['cofips', 'stfips', 'year'], how = 'inner')
-    print('merge complete')
+    filepath = "./inputs/eitc.dta"
+    eitc = clean_eitc(filepath)
+    print("eitc data cleaning complete", eitc.info())
 
-    print(test_birth_county['cofips'].info())
+    test_birth_county = pd.merge(cleaned_01, county, on = ['cofips', 'stfips', 'year'], how = 'inner')
+    print('merge with county complete', test_birth_county.describe())
+
+    test_birth_county_eitc = pd.merge(test_birth_county, eitc, on = ['stfips', 'year', 'numchildren'], how = 'inner')
+    print('merge with eitc complete', test_birth_county_eitc.describe())
+
+    #print(test_birth_county['cofips'].info())
 
 
 if __name__ == "__main__":
