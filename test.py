@@ -126,23 +126,23 @@ def test_6():
     nat_03['state'] = nat_03['state'].map(state_abbrev_fips_dict).astype(float)
     print("state conversion complete", nat_03.describe())
 
-    # cleaned_03 = clean_data(nat_03)
-    # print('birth data cleaned', cleaned_03.describe())
+    cleaned_03 = clean_data(nat_03)
+    print('birth data cleaned', cleaned_03.describe())
 
-    # filepath_u = "./inputs/county_vars.dta"
-    # filepath_r = "./inputs/ruralcounty_vars.dta"
-    # county = clean_county(filepath_u, filepath_r)
-    # print("county data cleaning complete")
+    filepath_u = "./inputs/county_vars.dta"
+    filepath_r = "./inputs/ruralcounty_vars.dta"
+    county = clean_county(filepath_u, filepath_r)
+    print("county data cleaning complete")
 
-    # filepath = "./inputs/eitc.dta"
-    # eitc = clean_eitc(filepath)
-    # print("eitc data cleaning complete", eitc.info())
+    filepath = "./inputs/eitc.dta"
+    eitc = clean_eitc(filepath)
+    print("eitc data cleaning complete", eitc.info())
 
-    # test_birth_county = pd.merge(cleaned_03, county, on = ['cofips', 'stfips', 'year'], how = 'inner')
-    # print('merge with county complete', test_birth_county.describe())
+    test_birth_county = pd.merge(cleaned_03, county, on = ['cofips', 'stfips', 'year'], how = 'inner')
+    print('merge with county complete', test_birth_county.describe())
 
-    # test_birth_county_eitc = pd.merge(test_birth_county, eitc, on = ['stfips', 'year', 'numchildren'], how = 'inner')
-    # print('merge with eitc complete', test_birth_county_eitc.describe())
+    test_birth_county_eitc = pd.merge(test_birth_county, eitc, on = ['stfips', 'year', 'numchildren'], how = 'inner')
+    print('merge with eitc complete', test_birth_county_eitc.describe())
 
 
 if __name__ == "__main__":
