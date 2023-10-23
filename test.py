@@ -33,14 +33,6 @@ def test_2():
     nat_03['state'] = nat_03['state'].map(state_abbrev_fips_dict)
     print("state conversion complete", nat_03.info())
 
-    #nat_03_states = pd.DataFrame(nat_03['state'])
-    #nat_03_states = convert_to_fips(nat_03_states)
-    #print("state conversion complete", nat_03.info())
-
-    #nat_03 = nat_03.drop(columns = ['state'])
-    #nat_03 = pd.concat([nat_03, nat_03_states], axis = 1)
-    #print("state concat complete", nat_03.info())
-
     nat_03 = clean_data(nat_03)
     print("cleaning complete", nat_03.info())
 

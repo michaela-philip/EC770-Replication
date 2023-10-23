@@ -1,13 +1,13 @@
 import numpy as np
 import pandas as pd
 
-def convert_to_fips(state_column):
-    FipsDF = pd.read_csv("./data/fips2county.tsv", delimiter = "\t")
-    StateFips = FipsDF[['StateAbbr', 'StateFIPS']] 
-    output = state_column.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
-    output['state'] = output['StateFIPS']
-    output = output.drop(columns=['StateAbbr', 'StateFIPS'])
-    return output
+# def convert_to_fips(state_column):
+#     FipsDF = pd.read_csv("./data/fips2county.tsv", delimiter = "\t")
+#     StateFips = FipsDF[['StateAbbr', 'StateFIPS']] 
+#     output = state_column.merge(StateFips, left_on = 'state', right_on = 'StateAbbr')
+#     output['state'] = output['StateFIPS']
+#     output = output.drop(columns=['StateAbbr', 'StateFIPS'])
+#     return output
 
 def clean_data(input):
     if not isinstance(input, pd.DataFrame):
