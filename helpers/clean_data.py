@@ -50,7 +50,7 @@ def clean_data(input):
 
     #race
     output['hispmiss'] = np.where(output['hisp'] == 9, 1, 0)
-    output['hisp'] = np.where((output['hisp'] == 0) & (output['hisp'] == 9), 0, 1)
+    output['hisp'] = np.where((output['hisp'] == 0) | (output['hisp'] == 9), 0, 1)
     output['black'] = np.where(output['race'] == 2, 1, 0)
     output['namer'] = np.where(output['race'] == 3, 1, 0)
     output['asian'] = np.where(output['race'] > 3, 1, 0)
@@ -62,7 +62,10 @@ def clean_data(input):
     output['prenatal'] = np.where(output['prenatal'] == 1, 1, np.where(output['prenatal'] == 5, np.nan, 0))
 
     #sex
-    output['female'] = np.where(output['sex'] == 2, 1, 0)
+    if output['sex'].dtype == 'object':
+        output['female'] = np.where(output['sex'] == 'F', 1, 0)
+    else:
+        output['female'] = np.where(output['sex'] == 2, 1, 0)
 
     #continuous birthweight missing values
     output['birthweight'] = np.where(output['birthweight'] == 9999, np.nan, output['birthweight'])
