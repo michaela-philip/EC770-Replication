@@ -55,7 +55,7 @@ def main():
 
     print("summary table complete", table_1)
 
-    #complete_data = pd.to_pickle("./complete_data.pkl")
+    merged.to_pickle("./complete_data.pkl")
 
 if __name__ == "__main__":
     print("I'm running!")

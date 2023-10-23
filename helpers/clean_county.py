@@ -17,9 +17,12 @@ def clean_county(filepath_u, filepath_r):
     output = pd.concat([output_1, output_2])
 
     return output
-
 # filepath_u = "./inputs/county_vars.dta"
 # filepath_r = "./inputs/ruralcounty_vars.dta"
 
 # county = clean_county(filepath_u, filepath_r)
+
+# unemp_14 = county
+
+# county.query('unemp == 1.4')
 
