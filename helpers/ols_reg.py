@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import statsmodels as sm
+import statsmodels.api as sm
 
 def ols_reg(data, y_var, x_var):
     y = data[y_var]
