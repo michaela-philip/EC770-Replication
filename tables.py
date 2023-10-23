@@ -15,14 +15,14 @@ def main():
 
     data = complete_data
 
-    # y_var = 'prenatal'
+    y_var = 'prenatal'
     x_var = ['eitc', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc']
-    # model_2_1 = ols_reg(data, y_var, x_var)
-    # print(model_2_1.summary())
+    model_2_1 = ols_reg(data, y_var, x_var)
+    print(model_2_1.summary())
 
-    y_var = 'tobacco'
-    model_2_2 = ols_reg(data, y_var, x_var)
-    print(model_2_2.summary())
+    # y_var = 'tobacco'
+    # model_2_2 = ols_reg(data, y_var, x_var)
+    # print(model_2_2.summary())
 
 
 if __name__ == "__main__":
