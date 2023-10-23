@@ -74,6 +74,7 @@ def test_4():
     print("county data cleaning complete")
 
     test_birth_county = pd.merge(cleaned_01, county, on = ['cofips', 'stfips', 'year'], how = 'inner')
+    print('merge complete')
 
     print(test_birth_county['cofips'].info())
 
