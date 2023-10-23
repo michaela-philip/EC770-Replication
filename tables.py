@@ -25,6 +25,18 @@ def main():
     # model_2_2 = ols_reg(data, y_var, x_var)
     # print(model_2_2.summary())
 
+    # y_var = 'birthweight'
+    # model_2_2 = ols_reg(data, y_var, x_var)
+    # print(model_2_2.summary())
+
+    # y_var = 'lbw'
+    # model_2_3 = ols_reg(data, y_var, x_var)
+    # print(model_2_3.summary())
+
+    # y_var = 'gestation'
+    # model_2_4 = ols_reg(data, y_var, x_var)
+    # print(model_2_4.summary())
+
 
 if __name__ == "__main__":
     print("I'm running!")
