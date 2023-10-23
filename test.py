@@ -73,7 +73,7 @@ def test_4():
     county = clean_county(filepath_u, filepath_r)
     print("county data cleaning complete")
 
-    test_birth_county = pd.merge(cleaned_01, county, on = ['cofips', 'stfips', 'year'], how = 'outer')
+    test_birth_county = pd.merge(cleaned_01, county, on = ['cofips', 'stfips', 'year'], how = 'inner')
 
     print(test_birth_county['cofips'].info())
 
