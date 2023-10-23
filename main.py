@@ -50,9 +50,10 @@ def main():
 
     merged = merge_data(cleaned_01, cleaned_02, cleaned_03, county, eitc)
 
-    return merged
-
+    print("merge complete", merged.head())
     table_1 = summary_table(merged)
+
+    print("summary table complete", table_1)
 
 if __name__ == "__main__":
     print("I'm running!")
