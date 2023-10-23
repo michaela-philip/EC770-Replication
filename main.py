@@ -6,7 +6,7 @@ from helpers.import_data import import_data
 from helpers.merge_data import merge_data
 from helpers.clean_county import clean_county
 from helpers.clean_eitc import clean_eitc
-from helpers.summary_stats import summary_table
+from helpers.summary_stats import summary_stats
 
 def main():
 
@@ -57,7 +57,7 @@ def main():
 
 def secondary():
     complete_data = pd.read_pickle("./complete_data.pkl")
-    table_1 = summary_table(complete_data)
+    table_1 = summary_stats(complete_data)
     print(table_1)
 
 
