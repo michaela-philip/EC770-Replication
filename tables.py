@@ -5,12 +5,13 @@ import matplotlib as plt
 
 from helpers.ols_reg import ols_reg
 from helpers.summary_stats import summary_table
+from helpers.summary_stats import summary_stats
 
 complete_data = pd.read_pickle("./complete_data.pkl")
 
 def main():
 
-    table_1 = summary_table(complete_data)
+    table_1 = summary_stats(complete_data)
     print(table_1)
 
     data = complete_data
