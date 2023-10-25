@@ -114,7 +114,10 @@ def test_10():
 
     births.to_pickle("./births.pkl")
 
-    
+def test_11():
+    births = pd.read_pickle("./births.pkl")
+    if births['year']==2003:
+        ((births['age']==99) & (births['year'] == 2001)).sum()
     
 
 if __name__ == "__main__":
