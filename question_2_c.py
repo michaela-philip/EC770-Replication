@@ -18,5 +18,11 @@ print(model_5_2.summary())
 prenatal_me = model_5_1.get_margeff(at='mean', method='dydx')
 lbw_me = model_5_2.get_margeff(at='mean', method='dydx')
 
-print("prenatal marginal effects " + prenatal_me)
-print("lbw marginal effects " + lbw_me)
+data = {'prenatal coeff' : model_5_1.params, 'prenatal marginal effects' : prenatal_me, 'low birthweight coeff' : model_5_2.params, 'low birthweight marginal effects' : lbw_me}
+table_5 = pd.DataFrame(data = data, index = x_var, columns = ['outcome', 'value'])
+table_5.to_csv("table_5.csv")
+print("table 5 complete")
+
+if __name__ == "__main__":
+    print("I'm running!")
+    main()
