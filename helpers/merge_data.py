@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-def merge_data_2(birth_1, birth_2, birth_3, county, eitc):
+def merge_data(birth_1, birth_2, birth_3, county, eitc):
     #first we combine all the birth data
     births = pd.concat([birth_1, birth_2, birth_3])
 
@@ -11,7 +11,7 @@ def merge_data_2(birth_1, birth_2, birth_3, county, eitc):
 
     return birth_county_eitc
 
-def merge_data(birth_1, birth_2, birth_3, county, eitc):
+def merge_data_2(birth_1, birth_2, birth_3, county, eitc):
     #first we combine all the birth data
     births = pd.concat([birth_1, birth_2, birth_3])    
 
