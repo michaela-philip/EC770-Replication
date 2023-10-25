@@ -18,14 +18,8 @@ def clean_county(filepath_u, filepath_r):
 
     return output
 
-filepath_u = "./inputs/county_vars.dta"
-filepath_r = "./inputs/ruralcounty_vars.dta"
 
-county = clean_county(filepath_u, filepath_r)
+if __name__ == "__main__":
+    raise RuntimeError("This script is not intended to be run directly.")
 
-unemp_14 = county
-
-county.query('unemp == 1.4')
-
-county.query('pctpoverty < 3.0')
 

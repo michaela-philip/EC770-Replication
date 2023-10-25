@@ -11,3 +11,6 @@ def clean_eitc(filepath):
     output['refund'] = np.where((output['eitc'] == 1) & (output['refund'] == 1), 1, np.where((output['eitc'] == 1) & (output['refund'] == 0), 0, np.nan))
 
     return output
+
+if __name__ == "__main__":
+    raise RuntimeError("This script is not intended to be run directly.")
