@@ -24,26 +24,30 @@ def main():
     x_var = ['eitc', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc']
     model_2_1 = ols_reg(data, y_var, x_var)
     data_2_1 = {'prenatal' : model_2_1.params, 'prenatal se' : model_2_1.bse}
+    print(model_2_1.summary())
     table_2 = pd.DataFrame(data_2_1, index = x_var)
 
     y_var = 'tobacco'
     model_2_2 = ols_reg(data, y_var, x_var)
     data_2_2 = {'tobacco' : model_2_2.params, 'tobacco se' : model_2_2.bse}
+    print(model_2_2.summary())
     table_2 = pd.concat([table_2, pd.DataFrame(data_2_2, index = x_var)], axis = 1)
 
     y_var = 'birthweight'
     model_2_3 = ols_reg(data, y_var, x_var)
     data_2_3 = {'birthweight' : model_2_3.params, 'birthweight se' : model_2_3.bse}
+    print(model_2_3.summary())
     table_2 = pd.concat([table_2, pd.DataFrame(data_2_3, index = x_var)], axis = 1)
 
     y_var = 'lbw'
     model_2_4 = ols_reg(data, y_var, x_var)
     data_2_4 = {'lbw' : model_2_4.params, 'lbw se' : model_2_4.bse}
+    print(model_2_4.summary())
     table_2 = pd.concat([table_2, pd.DataFrame(data_2_4, index = x_var)], axis = 1)
 
     y_var = 'gestation'
     model_2_5 = ols_reg(data, y_var, x_var)
-    # print(model_2_4.summary())
+    print(model_2_5.summary())
     data_2_5 = {'gestation' : model_2_5.params, 'gestation se' : model_2_5.bse}
     table_2 = pd.concat([table_2, pd.DataFrame(data_2_5, index = x_var)], axis = 1)
 
@@ -56,26 +60,31 @@ def main():
     y_var = 'prenatal'
     x_var = ['eitcp', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc']
     model_3_1 = ols_reg(data, y_var, x_var)
+    print(model_3_1.summary())
     data_3_1 = {'prenatal' : model_3_1.params, 'prenatal se' : model_3_1.bse}
     table_3 = pd.DataFrame(data_3_1, index = x_var)
 
     y_var = 'tobacco'
     model_3_2 = ols_reg(data, y_var, x_var)
+    print(model_3_2.summary())
     data_3_2 = {'tobacco' : model_3_2.params, 'tobacco se' : model_3_2.bse}
     table_3 = pd.concat([table_3, pd.DataFrame(data_3_2, index = x_var)], axis = 1)
 
     y_var = 'birthweight'
     model_3_3 = ols_reg(data, y_var, x_var)
+    print(model_3_3.summary())
     data_3_3 = {'birthweight' : model_3_3.params, 'birthweight se' : model_3_3.bse}
     table_3 = pd.concat([table_3, pd.DataFrame(data_3_3, index = x_var)], axis = 1)
 
     y_var = 'lbw'
     model_3_4 = ols_reg(data, y_var, x_var)
+    print(model_3_4.summary())
     data_3_4 = {'lbw' : model_3_4.params, 'lbw se' : model_3_4.bse}
     table_3 = pd.concat([table_3, pd.DataFrame(data_3_4, index = x_var)], axis = 1)
 
     y_var = 'gestation'
     model_3_5 = ols_reg(data, y_var, x_var)
+    print(model_3_5.summary())
     data_3_5 = {'gestation' : model_3_5.params, 'gestation se' : model_3_5.bse}
     table_3 = pd.concat([table_3, pd.DataFrame(data_3_5, index = x_var)], axis = 1)
 
