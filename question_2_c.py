@@ -16,10 +16,12 @@ y_var = 'lbw'
 model_5_2 = sm.Probit(y, X).fit(cov_type = 'cluster', cov_kwds = {'groups': data['stfips']})
 print(model_5_2.summary())
 
+
 prenatal_me = model_5_1.get_margeff(at='mean', method='dydx')
 lbw_me = model_5_2.get_margeff(at='mean', method='dydx')
 
-print("prenatal params",  model_5_1.params)
-print("prenatal me",  prenatal_me)
-print("lbw params",  model_5_2.params)
-print("lbw me",  lbw_me)
+data={'prenatal' : model_5_1.params, 'prenatal marginal effects' : prenatal_me.summary(), 'low birth weight' : model_5_2.params, 'low birth weight marginal effects' : lbw_me.summary()}
+
+table_5 = pd.DataFrame(data, index = x_var)
+print(table_5)
+table_5.to_csv("table_5.csv")
