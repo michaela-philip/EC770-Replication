@@ -46,7 +46,7 @@ def clean_data(input):
     output = output.drop(columns = ['conception_month', 'byear'])
 
     #age
-    output['age'] = np.where(output['age'] == 99, np.nan, output['age'])
+    #output['age'] = np.where(output['age'] == 99, np.nan, output['age'])
 
     #race
     output['hispmiss'] = np.where(output['hisp'] == 9, 1, 0)
