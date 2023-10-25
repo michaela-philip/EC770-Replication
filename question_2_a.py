@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from ols_reg import ols_reg 
+from helpers.ols_reg import ols_reg 
 
 def main():
 
