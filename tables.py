@@ -52,7 +52,7 @@ def main():
     table_2 = pd.concat([table_2, pd.DataFrame(data_2_5, index = x_var)], axis = 1)
 
     table_2.rename(columns = {'prenatal' : '1st Trimester Prenatal Care', 'tobacco' : 'Smoked During Pregnancy', 'birthweight' : 'Birthweight', 'lbw' : 'Birth Weight<2500 grams', 'gestation' : 'Gestation Weeks'}, index = {'eitc': 'State has an EITC', 'age': 'Maternal age', 'marital': 'Married', 'female': 'Female baby', 'black': 'Black', 'namer': 'Native American', 'asian': 'Asian', 'hisp': 'Hispanic', 'hseduc': 'Less than high school', 'hispmiss': 'Hispanic ethnicity missing', 'cp500': 'County pop 500,000-1,000,000', 'cp250': 'County pop 250,000-500,000', 'cp100': 'County pop 100,000-250,000', 'cpsmall': 'County pop<100,000', 'unemp': 'Unemployment', 'rpcinc': 'Real income per capital (in $1000s)', 'pctpoverty': 'Percent poverty', 'supplyMD_pc': 'Primary care physicians per 1000 females age 15-44'}, inplace = True)
-    print(table_2)
+    # print(table_2)
     table_2.to_csv("table_2.csv")
     print("table 2 complete")
 
@@ -89,7 +89,7 @@ def main():
     table_3 = pd.concat([table_3, pd.DataFrame(data_3_5, index = x_var)], axis = 1)
 
     table_3.rename(columns = {'prenatal' : '1st Trimester Prenatal Care', 'tobacco' : 'Smoked During Pregnancy', 'birthweight' : 'Birthweight', 'lbw' : 'Birth Weight<2500 grams', 'gestation' : 'Gestation Weeks'}, index = {'eitcp': 'EITC percent of federal (among states with EITC)', 'age': 'Maternal age', 'marital': 'Married', 'female': 'Female baby', 'black': 'Black', 'namer': 'Native American', 'asian': 'Asian', 'hisp': 'Hispanic', 'hseduc': 'Less than high school', 'hispmiss': 'Hispanic ethnicity missing', 'cp500': 'County pop 500,000-1,000,000', 'cp250': 'County pop 250,000-500,000', 'cp100': 'County pop 100,000-250,000', 'cpsmall': 'County pop<100,000', 'unemp': 'Unemployment', 'rpcinc': 'Real income per capital (in $1000s)', 'pctpoverty': 'Percent poverty', 'supplyMD_pc': 'Primary care physicians per 1000 females age 15-44'}, inplace = True)
-    print(table_3)
+    # print(table_3)
     table_3.to_csv("table_3.csv")
     print("table 3 complete")
 
