@@ -23,7 +23,7 @@ def main():
 
     y_var = 'birthweight'
     model_4_3 = ols_reg(data, y_var, x_var)
-    print(model_3_3.summary())
+    print(model_4_3.summary())
     data_4_3 = {'birthweight' : model_4_3.params, 'birthweight se' : model_4_3.bse}
     table_4 = pd.concat([table_4, pd.DataFrame(data_4_3, index = x_var)], axis = 1)
 
