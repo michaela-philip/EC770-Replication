@@ -17,8 +17,8 @@ model_5_2 = sm.Probit(y, X).fit(cov_type = 'cluster', cov_kwds = {'groups': data
 print(model_5_2.summary())
 
 
-prenatal_me = model_5_1.get_margeff(at='mean', method='dydx')
-lbw_me = model_5_2.get_margeff(at='mean', method='dydx')
+prenatal_me = model_5_1.get_margeff(at='mean', method='dydx', count=True)
+lbw_me = model_5_2.get_margeff(at='mean', method='dydx'), count=True
 
 print(prenatal_me.summary())
 print(lbw_me.summary())
