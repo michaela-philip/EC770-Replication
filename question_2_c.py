@@ -6,7 +6,7 @@ from patsy import dmatrices
 data = pd.read_pickle("./complete_data.pkl").dropna()
 
 y_var = 'prenatal'
-x_var = ['eitc', 'age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc']
+x_var = ['age', 'marital', 'female', 'black', 'namer', 'asian', 'hisp', 'hseduc', 'hispmiss', 'cp500', 'cp250', 'cp100', 'cpsmall', 'unemp', 'rpcinc', 'pctpoverty', 'supplyMD_pc', 'eitc']
 formula = y_var + '~' + '+' .join(x_var) + '+ C(stfips) + C(year) - 1'
 y, X = dmatrices(formula, data, return_type = 'dataframe')
 model_5_1 = sm.Probit(y, X).fit(cov_type = 'cluster', cov_kwds = {'groups': data['stfips']})
@@ -17,8 +17,8 @@ model_5_2 = sm.Probit(y, X).fit(cov_type = 'cluster', cov_kwds = {'groups': data
 print(model_5_2.summary())
 
 
-prenatal_me = model_5_1.get_margeff(at='all', method='dydx')
-lbw_me = model_5_2.get_margeff(at='all', method='dydx')
+prenatal_me = model_5_1.get_margeff(at='mean', method='dydx')
+lbw_me = model_5_2.get_margeff(at='mean', method='dydx')
 
 print(prenatal_me.summary())
 print(lbw_me.summary())
