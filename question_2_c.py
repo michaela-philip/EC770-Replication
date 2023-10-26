@@ -13,6 +13,7 @@ model_5_1 = sm.Probit(y, X).fit(cov_type = 'cluster', cov_kwds = {'groups': data
 print(model_5_1.summary())
 
 y_var = 'lbw'
+formula = y_var + '~' + '+' .join(x_var) + '+ C(stfips) + C(year) - 1'
 model_5_2 = sm.Probit(y, X).fit(cov_type = 'cluster', cov_kwds = {'groups': data['stfips']})
 print(model_5_2.summary())
 
