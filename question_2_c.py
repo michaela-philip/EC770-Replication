@@ -18,7 +18,7 @@ print(model_5_2.summary())
 
 
 prenatal_me = model_5_1.get_margeff(at='mean', method='dydx', count=True)
-lbw_me = model_5_2.get_margeff(at='mean', method='dydx'), count=True
+lbw_me = model_5_2.get_margeff(at='mean', method='dydx', count=True)
 
 print(prenatal_me.summary())
 print(lbw_me.summary())
